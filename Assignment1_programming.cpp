@@ -5,7 +5,7 @@
 #include <fstream>
 
 //To check whether the input is an none-negative integer
-//¼ì²éÊäÈëÊÇ·ñÎªÒ»¸ö·Ç¸ºÕûĞÍ
+//æ£€æŸ¥è¾“å…¥æ˜¯å¦ä¸ºä¸€ä¸ªéè´Ÿæ•´å‹
 bool inputCheck(std::string str) {
 	int length = str.length();
 	for (int i = 0; i < length; i++) {
@@ -17,7 +17,7 @@ bool inputCheck(std::string str) {
 }
 
 //change string to integer
-//½«×Ö·û´®×ª»»ÎªÕûĞÍ
+//å°†å­—ç¬¦ä¸²è½¬æ¢ä¸ºæ•´å‹
 int changeStrToInt(std::string str) {
 	int length = str.length();
 	int sum = 0;
@@ -29,7 +29,7 @@ int changeStrToInt(std::string str) {
 }
 
 //init n and k
-//³õÊ¼»¯nºÍk
+//åˆå§‹åŒ–nå’Œk
 bool init(int& intN, int& intK) {
 	std::string strN, strK;
 
@@ -50,7 +50,7 @@ bool init(int& intN, int& intK) {
 }
 
 //tree's node
-//Ê÷µÄ½Úµã
+//æ ‘çš„èŠ‚ç‚¹
 class Node {
 private:
 	int _num;
@@ -92,19 +92,19 @@ public:
 		resultNum = 0;
 	}
 	//to check the variable num if it is in the range
-	//¼ì²é±äÁ¿numÊÇ·ñÔÚ·¶Î§ÄÚ
+	//æ£€æŸ¥å˜é‡numæ˜¯å¦åœ¨èŒƒå›´å†…
 	bool rangeCheck(int num) {
 		return (num >= 0 && num <= 9) ? true : false;
 	}
 
 	//change character into integer
-	//½«×Ö·ûÀàĞÍ×ª»»ÎªÕûĞÍ
+	//å°†å­—ç¬¦ç±»å‹è½¬æ¢ä¸ºæ•´å‹
 	int changeCharToInt(char c) {
 		return c - '0';
 	}
 
 	//create the binary tree
-	//´´½¨¶ş²æÊ÷
+	//åˆ›å»ºäºŒå‰æ ‘
 	void creatTree(Node* p,int depth) {
 		if (depth >= n || p == nullptr) {
 			return;
@@ -138,7 +138,7 @@ public:
 	}
 
 	//travel the whole tree
-	//±éÀúÕû¿ÃÊ÷
+	//éå†æ•´æ£µæ ‘
 	void travelsal(Node* p,int depth,std::ofstream& out) {
 		if (p == nullptr) {
 			return;
@@ -170,7 +170,7 @@ public:
 	}
 
 	//free the dynamic memory
-	//ÊÍ·Å¶¯Ì¬ÄÚ´æ
+	//é‡Šæ”¾åŠ¨æ€å†…å­˜
 	void travelsal(Node* p) {
 		if (p == nullptr) {
 			return ;
@@ -199,7 +199,7 @@ public:
 			return false;
 		}
 		/*(n == 1) means no matter what value k is,it can never meet the demand
-			* (n == 1)ÒâÎ¶×Å²»ÂÛkµÄÖµÎª¶àÉÙ£¬¶¼ÎŞ·¨Âú×ãÒªÇó			*/
+			* (n == 1)æ„å‘³ç€ä¸è®ºkçš„å€¼ä¸ºå¤šå°‘ï¼Œéƒ½æ— æ³•æ»¡è¶³è¦æ±‚			*/
 		if (n == 1) {
 			std::cout << "[]" << std::endl;
 			out << "[]" << std::endl;
@@ -213,10 +213,10 @@ public:
 				root->setRightChild(nullptr);
 				root->setValue(rootNum);
 				/*cause the number cannot start with zero
-				* ÒòÎªÊı×Ö²»ÄÜÒÔ0¿ªÍ· */
+				* å› ä¸ºæ•°å­—ä¸èƒ½ä»¥0å¼€å¤´ */
 				if (k == 0) {
 					/*if (k == 0) then it would not be a binary tree
-					*Èç¹û£¨k == 0£©Ôò¾Í²»»áÊÇÒ»¿Ã¶ş²æÊ÷£¬¿ÉÒÔÖ±½ÓÊä³ö*/
+					*å¦‚æœï¼ˆk == 0ï¼‰åˆ™å°±ä¸ä¼šæ˜¯ä¸€æ£µäºŒå‰æ ‘ï¼Œå¯ä»¥ç›´æ¥è¾“å‡º*/
 					for (int i = 0; i < n; i++) {
 						std::cout << rootNum;
 						out << rootNum;
