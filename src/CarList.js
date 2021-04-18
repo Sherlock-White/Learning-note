@@ -76,9 +76,45 @@ class CarList extends Component {
         this.setState({
             filterCondition:condition,
         });
-        //console.log(condition);
     }
-
+    changeViewCondition(carsCopy,selectedValue,selectedTag){
+        let mycars = carsCopy;
+        if(selectedValue === 'all'){
+            mycars.map((car)=>{
+                car.view = true;
+            });
+        }else{
+            mycars.map((car)=>{
+                car.view = false;
+                switch(selectedTag){
+                    case "selectBrand":
+                        if(car.brand === selectedValue){
+                            car.view = true;
+                        }
+                        break;
+                    case "selectStyle":
+                        if(car.style === selectedValue){
+                            car.view = true;
+                        }
+                        break;
+                    case "selectVotes":
+                        if(car.votes === selectedValue){
+                            car.view = true;
+                        }
+                        break;
+                    case "selectStars":
+                        if(car.stars === selectedValue){
+                            car.view = true;
+                        }
+                        break;
+                }
+            });
+        }
+        console.log(mycars);
+        /*this.setState({
+            cars:mycars,
+        });*/
+    }
     //组件初始化结束后框架会调用这个函数
     //This function is called by the framework after the initialization of the component is complete.
     componentDidMount() {
@@ -107,8 +143,10 @@ class CarList extends Component {
         );
         const tableTitleWithFilter = (
             <Filter 
+                key={'filter'}
                 cars={mycars}
                 handleStarCal={this.calculateStar}
+                handleSelect={this.changeViewCondition}
             />
         );
         const changeVote = id =>{
@@ -133,6 +171,7 @@ class CarList extends Component {
                 style={car.style}
                 votes={car.votes}
                 stars={this.calculateStar(car.votes)}
+                view = {car.view}
                 handleVoteChange={changeVote}
             />
         ));
@@ -147,6 +186,7 @@ class CarList extends Component {
             </button>
         </ul>
         );
+        ////////////////////////////////////////////////////
         const search = (
             <div>
                 <form method="get">

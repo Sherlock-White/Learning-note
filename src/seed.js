@@ -8,24 +8,28 @@ window.Seed = (function () {
         brand:'TOYOTA',
         style:'ZRE120',
         votes: generateVoteCount(),
+        view:true,
       },
       {
         id: 2,
         brand:'BENZ',
         style:'Sprinter',
         votes: generateVoteCount(),
+        view:true,
       },
       {
         id: 3,
         brand:'Ford',
         style:'focus',
         votes: generateVoteCount(),
+        view:true,
       },
       {
         id: 4,
         brand:'Chevrolet',
         style:'VengaSoul',
         votes: generateVoteCount(),
+        view:true,
       },
     ];
   
